@@ -1,13 +1,35 @@
 import { combineReducers } from "redux";
 
-const Weights = (
-    state = [
-        { date: "Today", weight: "10 st 8" },
-        { date: "10th June", weight: "10 st 8" },
-    ],
-    action
-) => {
-    return state;
+const Weights = (state = [], action) => {
+    switch (action.type) {
+        case "LOG_WEIGHT":
+            return [action.payload, ...state];
+        default:
+            return state;
+    }
 };
 
-export default combineReducers({ Weights });
+const WeightDialog = (state = { open: false }, action) => {
+    switch (action.type) {
+        case "OPEN_WEIGHT_DIALOG":
+            return { open: true };
+        case "LOG_WEIGHT":
+        case "CLOSE_WEIGHT_DIALOG":
+            return { open: false };
+        default:
+            return state;
+    }
+};
+
+const FoodDialog = (state = { open: false }, action) => {
+    switch (action.type) {
+        case "OPEN_FOOD_DIALOG":
+            return { open: true };
+        case "CLOSE_FOOD_DIALOG":
+            return { open: false };
+        default:
+            return state;
+    }
+};
+
+export default combineReducers({ Weights, WeightDialog, FoodDialog });

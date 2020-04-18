@@ -1,4 +1,20 @@
+html {
+    background-color: #f5f5f5;
+}
+
 body {
     font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen,
         Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    color: #333;
+}
+
+h1 {
+    margin: 12px 0 10px 0;
+}
+
+button.addBtn {
+    position: fixed;
+    right: 10px;
+    bottom: 65px;
+    z-index: 10;
 }

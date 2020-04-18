@@ -12,21 +12,21 @@ const App = () => {
             {value === 0 ? <FoodLog /> : <WeightLog />}
 
             <BottomNavigation
-                style={{ width: "100%", position: "fixed", bottom: 0 }}
+                style={{
+                    width: "100%",
+                    position: "fixed",
+                    bottom: 0,
+                    left: 0,
+                    borderTop: "1px solid #fefefe",
+                }}
                 value={value}
                 onChange={(event, newValue) => {
                     setValue(newValue);
                 }}
                 showLabels
             >
-                <BottomNavigationAction
-                    label="Food Logs"
-                    icon={<DateRange />}
-                />
-                <BottomNavigationAction
-                    label="Weight Logs"
-                    icon={<TrendingDown />}
-                />
+                <BottomNavigationAction label="Food Logs" icon={<DateRange />} />
+                <BottomNavigationAction label="Weight Logs" icon={<TrendingDown />} />
             </BottomNavigation>
         </>
     );
