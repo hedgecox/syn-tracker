@@ -30,3 +30,10 @@ export const CloseFoodDialog = () => {
         type: "CLOSE_FOOD_DIALOG",
     };
 };
+
+export const LogFood = (payload) => {
+    return {
+        type: "LOG_FOOD",
+        payload,
+    };
+};

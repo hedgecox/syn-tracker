@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle } from "@material-ui/core";
 import { connect } from "react-redux";
-import { CloseFoodDialog } from "../redux/actions";
+import { CloseFoodDialog, LogFood } from "../redux/actions";
 
-const FoodDialog = ({ CloseFoodDialog, FoodDialog }) => {
+const FoodDialog = ({ CloseFoodDialog, FoodDialog, LogFood }) => {
     const today = new Date().toISOString().substr(0, 10);
     const [date, setDate] = useState(today);
     const [food, setFood] = useState("");
@@ -21,7 +21,9 @@ const FoodDialog = ({ CloseFoodDialog, FoodDialog }) => {
                 <Button color="primary" onClick={CloseFoodDialog}>
                     Cancel
                 </Button>
-                <Button color="primary">Log</Button>
+                <Button color="primary" onClick={() => LogFood({ date: new Date(date), food, syns })}>
+                    Log
+                </Button>
             </DialogActions>
         </Dialog>
     );
@@ -33,4 +35,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, { CloseFoodDialog })(FoodDialog);
+export default connect(mapStateToProps, { CloseFoodDialog, LogFood })(FoodDialog);

@@ -6,10 +6,19 @@ import FoodDialog from "./FoodDialog";
 
 import { OpenFoodDialog } from "../redux/actions";
 
-const FoodLog = ({ OpenFoodDialog }) => {
+const FoodLog = ({ OpenFoodDialog, Foods }) => {
     return (
         <>
             <h1>Food Log</h1>
+
+            {Foods.map((i) => {
+                return (
+                    <p>
+                        {i.food} - Syns: {i.syns}
+                    </p>
+                );
+            })}
+
             <Fab color="primary" aria-label="add" className="addBtn" onClick={OpenFoodDialog}>
                 <Add />
             </Fab>
@@ -19,4 +28,10 @@ const FoodLog = ({ OpenFoodDialog }) => {
     );
 };
 
-export default connect(null, { OpenFoodDialog })(FoodLog);
+const mapStateToProps = (state) => {
+    return {
+        Foods: state.Foods,
+    };
+};
+
+export default connect(mapStateToProps, { OpenFoodDialog })(FoodLog);

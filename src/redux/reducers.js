@@ -9,6 +9,15 @@ const Weights = (state = [], action) => {
     }
 };
 
+const Foods = (state = [], action) => {
+    switch (action.type) {
+        case "LOG_FOOD":
+            return [action.payload, ...state];
+        default:
+            return state;
+    }
+};
+
 const WeightDialog = (state = { open: false }, action) => {
     switch (action.type) {
         case "OPEN_WEIGHT_DIALOG":
@@ -25,6 +34,7 @@ const FoodDialog = (state = { open: false }, action) => {
     switch (action.type) {
         case "OPEN_FOOD_DIALOG":
             return { open: true };
+        case "LOG_FOOD":
         case "CLOSE_FOOD_DIALOG":
             return { open: false };
         default:
@@ -32,4 +42,4 @@ const FoodDialog = (state = { open: false }, action) => {
     }
 };
 
-export default combineReducers({ Weights, WeightDialog, FoodDialog });
+export default combineReducers({ Weights, WeightDialog, FoodDialog, Foods });
