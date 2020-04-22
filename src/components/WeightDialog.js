@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle } from "@material-ui/core";
+import { v4 } from "uuid";
 import { CloseWeightDialog, LogWeight } from "../redux/actions";
 
 const WeightDialog = ({ WeightDialog, CloseWeightDialog, LogWeight }) => {
@@ -29,7 +30,7 @@ const WeightDialog = ({ WeightDialog, CloseWeightDialog, LogWeight }) => {
 				<Button color="primary" onClick={CloseWeightDialog}>
 					Cancel
 				</Button>
-				<Button color="primary" onClick={() => LogWeight({ date: new Date(date), weight, bodyFat })}>
+				<Button color="primary" onClick={() => LogWeight({ date: new Date(date), weight, bodyFat, id: v4() })}>
 					Log
 				</Button>
 			</DialogActions>

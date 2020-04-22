@@ -32,3 +32,14 @@ td.dateHeader {
     text-align: center;
     font-weight: bold;
 }
+
+.removeItem{
+    width: 0;
+}
+
+.removeItem button{
+    padding: 5px;
+    min-width: unset;
+    color: #444;
+    font-size: 75%;
+}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle } from "@material-ui/core";
 import { connect } from "react-redux";
+import { v4 } from "uuid";
 import { CloseFoodDialog, LogFood } from "../redux/actions";
 
 const FoodDialog = ({ CloseFoodDialog, FoodDialog, LogFood }) => {
@@ -29,7 +30,7 @@ const FoodDialog = ({ CloseFoodDialog, FoodDialog, LogFood }) => {
 				<Button color="primary" onClick={CloseFoodDialog}>
 					Cancel
 				</Button>
-				<Button color="primary" onClick={() => LogFood({ date: new Date(date), food, syns })}>
+				<Button color="primary" onClick={() => LogFood({ date: new Date(date), food, syns, id: v4() })}>
 					Log
 				</Button>
 			</DialogActions>

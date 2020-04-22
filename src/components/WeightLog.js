@@ -1,12 +1,12 @@
 import React from "react";
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Fab } from "@material-ui/core";
-import { Add } from "@material-ui/icons";
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Fab, Button } from "@material-ui/core";
+import { Add, Delete } from "@material-ui/icons";
 import { connect } from "react-redux";
 import WeightDialog from "./WeightDialog";
-import { OpenWeightDialog } from "../redux/actions";
+import { OpenWeightDialog, DeleteWeight } from "../redux/actions";
 import moment from "moment";
 
-const WeightLog = ({ Weights, OpenWeightDialog }) => {
+const WeightLog = ({ Weights, OpenWeightDialog, DeleteWeight }) => {
 	return (
 		<>
 			<h1>Weight Log</h1>
@@ -17,15 +17,25 @@ const WeightLog = ({ Weights, OpenWeightDialog }) => {
 							<TableCell>Date</TableCell>
 							<TableCell>Weight</TableCell>
 							<TableCell>BodyFat %</TableCell>
+							<TableCell></TableCell>
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{Weights.map((weight, ind) => {
+						{Weights.map((weight) => {
 							return (
-								<TableRow key={ind}>
+								<TableRow key={weight.id}>
 									<TableCell>{moment(weight.date).format("Do MMM YYYY")}</TableCell>
 									<TableCell>{weight.weight}</TableCell>
 									<TableCell>{weight.bodyFat}%</TableCell>
+									<TableCell className="removeItem">
+										<Button
+											onClick={() => {
+												window.confirm("Are you sure you want to delete?") && DeleteWeight(weight.id);
+											}}
+										>
+											<Delete />
+										</Button>
+									</TableCell>
 								</TableRow>
 							);
 						})}
@@ -48,4 +58,4 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(mapStateToProps, { OpenWeightDialog })(WeightLog);
+export default connect(mapStateToProps, { OpenWeightDialog, DeleteWeight })(WeightLog);
