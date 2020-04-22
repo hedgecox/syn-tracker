@@ -19,7 +19,7 @@ const FoodDialog = ({ CloseFoodDialog, FoodDialog, LogFood }) => {
 	}, [FoodDialog]);
 
 	return (
-		<Dialog open={FoodDialog.open}>
+		<Dialog open={FoodDialog.open} onClose={CloseFoodDialog}>
 			<DialogTitle>Log Food</DialogTitle>
 			<DialogContent>
 				<TextField label="Date" type="date" fullWidth value={date} onChange={(e) => setDate(e.target.value)} />

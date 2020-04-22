@@ -19,7 +19,7 @@ const WeightDialog = ({ WeightDialog, CloseWeightDialog, LogWeight }) => {
 	}, [WeightDialog]);
 
 	return (
-		<Dialog open={WeightDialog.open}>
+		<Dialog open={WeightDialog.open} onClose={CloseWeightDialog}>
 			<DialogTitle>Log Weight</DialogTitle>
 			<DialogContent>
 				<TextField label="Date" type="date" fullWidth value={date} onChange={(e) => setDate(e.target.value)} />
