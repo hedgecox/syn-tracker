@@ -15,17 +15,21 @@ const FoodLog = ({ OpenFoodDialog, Foods, DeleteFood }) => {
 	let mapDateHeaders = null; //used to flag when the date changes
 
 	const dateHeaders = (d, arr) => {
+		d = new Date(d);
 		mapDateHeaders = d;
-		const daySyns = arr
-			.filter((i) => new Date(i.date).getDate() === new Date(d).getDate())
-			.reduce((acc, el) => acc + (parseInt(el.syns) || 0), 0);
+		const daySyns = arr.filter((i) => new Date(i.date).getDate() === d.getDate()).reduce((acc, el) => acc + (parseInt(el.syns) || 0), 0);
 		const daySynsPercent = (daySyns / 15) * 100;
 
 		return (
 			<>
 				<TableRow>
 					<TableCell colSpan={99} className="dateHeader">
-						{moment(d).format("Do MMM")} - {daySyns} Syns
+						{moment(d).isSame(today, "d")
+							? "Today"
+							: moment(d).add(1, "d").isSame(today, "d")
+							? "Yesterday"
+							: moment(d).format("dddd Do MMM")}{" "}
+						- {daySyns} Syns
 						<LinearProgress
 							value={daySynsPercent > 100 ? 100 : daySynsPercent}
 							variant="determinate"
