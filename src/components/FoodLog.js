@@ -16,7 +16,9 @@ const FoodLog = ({ OpenFoodDialog, Foods }) => {
 
 	const dateHeaders = (d, arr) => {
 		mapDateHeaders = d;
-		const daySyns = arr.filter((i) => i.date.getDate() === d.getDate()).reduce((acc, el) => acc + (parseInt(el.syns) || 0), 0);
+		const daySyns = arr
+			.filter((i) => new Date(i.date).getDate() === new Date(d).getDate())
+			.reduce((acc, el) => acc + (parseInt(el.syns) || 0), 0);
 		const daySynsPercent = (daySyns / 15) * 100;
 
 		return (
@@ -54,7 +56,7 @@ const FoodLog = ({ OpenFoodDialog, Foods }) => {
 						{Foods.filter((i) => moment(i.date).isBetween(startWeek, endWeek)).map((i, index, arr) => {
 							return (
 								<React.Fragment key={index}>
-									{mapDateHeaders?.getDate() !== i.date.getDate() && dateHeaders(i.date, arr)}
+									{new Date(mapDateHeaders)?.getDate() !== new Date(i.date).getDate() && dateHeaders(i.date, arr)}
 									<TableRow>
 										<TableCell>{i.food}</TableCell>
 										<TableCell>{i.syns}</TableCell>

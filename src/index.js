@@ -5,12 +5,22 @@ import reducers from "./redux/reducers";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { Provider } from "react-redux";
 
+import { loadState, saveState } from "./localStorage";
 import App from "./components/App";
 import "./base.css";
 
+const persistedState = loadState();
+
+const store = createStore(reducers, persistedState, composeWithDevTools());
+
+store.subscribe(() => {
+	console.log("Saving state");
+	saveState(store.getState());
+});
+
 ReactDOM.render(
-    <Provider store={createStore(reducers, composeWithDevTools())}>
-        <App />
-    </Provider>,
-    document.querySelector("#root")
+	<Provider store={store}>
+		<App />
+	</Provider>,
+	document.querySelector("#root")
 );

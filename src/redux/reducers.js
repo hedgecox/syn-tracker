@@ -4,7 +4,7 @@ const Weights = (state = [], action) => {
 	switch (action.type) {
 		case "LOG_WEIGHT":
 			console.log("log weight");
-			return [action.payload, ...state].sort((a, b) => b.date - a.date);
+			return [action.payload, ...state].sort((a, b) => new Date(b.date) - new Date(a.date));
 		default:
 			return state;
 	}
@@ -13,7 +13,7 @@ const Weights = (state = [], action) => {
 const Foods = (state = [], action) => {
 	switch (action.type) {
 		case "LOG_FOOD":
-			return [action.payload, ...state].sort((a, b) => b.date - a.date);
+			return [action.payload, ...state].sort((a, b) => new Date(b.date) - new Date(a.date));
 		default:
 			return state;
 	}

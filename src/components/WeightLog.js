@@ -4,6 +4,7 @@ import { Add } from "@material-ui/icons";
 import { connect } from "react-redux";
 import WeightDialog from "./WeightDialog";
 import { OpenWeightDialog } from "../redux/actions";
+import moment from "moment";
 
 const WeightLog = ({ Weights, OpenWeightDialog }) => {
 	return (
@@ -22,7 +23,7 @@ const WeightLog = ({ Weights, OpenWeightDialog }) => {
 						{Weights.map((weight, ind) => {
 							return (
 								<TableRow key={ind}>
-									<TableCell>{weight.date.toLocaleString().substring(0, 10)}</TableCell>
+									<TableCell>{moment(weight.date).format("Do MMM YYYY")}</TableCell>
 									<TableCell>{weight.weight}</TableCell>
 									<TableCell>{weight.bodyFat}%</TableCell>
 								</TableRow>
