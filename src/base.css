@@ -43,3 +43,14 @@ td.dateHeader {
     color: #444;
     font-size: 75%;
 }
+
+@media(max-width: 768px){
+    div.MuiDialog-scrollPaper{
+        align-items: start;
+    }
+
+
+    div.MuiDialog-paper{
+        margin-top:15px
+    }
+}
