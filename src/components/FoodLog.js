@@ -29,7 +29,7 @@ const FoodLog = ({ OpenFoodDialog, Foods, DeleteFood }) => {
 							: moment(d).add(1, "d").isSame(today, "d")
 							? "Yesterday"
 							: moment(d).format("dddd Do MMM")}{" "}
-						- {15 - daySyns} Syns remaining
+						{15 - daySyns} Syns remaining
 						<LinearProgress
 							value={daySynsPercent > 100 ? 100 : daySynsPercent}
 							variant="determinate"
