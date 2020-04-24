@@ -29,7 +29,7 @@ const FoodLog = ({ OpenFoodDialog, Foods, DeleteFood }) => {
 							: moment(d).add(1, "d").isSame(today, "d")
 							? "Yesterday"
 							: moment(d).format("dddd Do MMM")}{" "}
-						- {daySyns} Syns
+						- {15 - daySyns} Syns remaining
 						<LinearProgress
 							value={daySynsPercent > 100 ? 100 : daySynsPercent}
 							variant="determinate"
@@ -63,7 +63,11 @@ const FoodLog = ({ OpenFoodDialog, Foods, DeleteFood }) => {
 									{new Date(mapDateHeaders)?.getDate() !== new Date(i.date).getDate() && dateHeaders(i.date, arr)}
 									<TableRow>
 										<TableCell>{i.food}</TableCell>
-										<TableCell>{i.syns}</TableCell>
+										<TableCell>
+											{i.type === "A" && "Healthy A 🧀"}
+											{i.type === "B" && "Healthy B 🥖"}
+											{i.syns || ""}
+										</TableCell>
 										<TableCell className="removeItem">
 											<Button
 												onClick={() => {

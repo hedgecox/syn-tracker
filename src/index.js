@@ -11,6 +11,8 @@ import "./base.css";
 
 const persistedState = loadState();
 
+console.log(persistedState);
+
 const store = createStore(reducers, persistedState, composeWithDevTools());
 
 store.subscribe(() => {
