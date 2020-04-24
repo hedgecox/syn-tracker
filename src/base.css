@@ -46,6 +46,15 @@ td.dateHeader {
 div.MuiFormGroup-root {
 	flex-direction: row;
 	margin-top: 5px;
+	justify-content: space-between;
+}
+
+label.MuiFormControlLabel-root {
+	margin-right: 5px;
+}
+
+span.MuiRadio-root {
+	padding-right: 3px;
 }
 
 @media (max-width: 768px) {
