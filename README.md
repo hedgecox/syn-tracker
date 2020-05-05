@@ -11,7 +11,6 @@ Very simple Syn tracker designed to be used for [Slimming World](https://www.sli
 -   React [(Create React App)](https://github.com/facebook/create-react-app)
 -   Redux
 -   Redux Thunk
--   CSS Modules
 -   Material UI
 -   Moment
 
